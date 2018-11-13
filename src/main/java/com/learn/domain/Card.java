@@ -7,6 +7,9 @@ public class Card {
     private Suite suite;
     private Face face;
 
+    public Card(int suiteVal, int faceVal){
+        this.suite = Suite.getSuiteFromVal(suiteVal);
+    }
     @Override
     public boolean equals(Object o){
         if(o instanceof Card) {
