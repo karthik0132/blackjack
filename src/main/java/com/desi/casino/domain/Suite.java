@@ -1,4 +1,4 @@
-package com.learn.domain;
+package com.desi.casino.domain;
 
 public enum Suite {
     SPADES(1),

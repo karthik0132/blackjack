@@ -1,4 +1,4 @@
-package com.learn.domain;
+package com.desi.casino.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Card {
-    private int suite;
     private int face;
+    private int suite;
 
     public Card(int suite, int face){
         this.suite = suite;
@@ -16,13 +16,14 @@ public class Card {
     @Override
     public boolean equals(Object o){
         Card card;
-        System.out.println("In equals method of Card.java");
+        //System.out.println("In equals method of Card.java");
+        //System.out.println("HashCode of this Object:+"+o.hashCode());
         if(o instanceof Card) {
             card = (Card) o;
             if((card.face == this.face) && (card.suite == this.suite)){
                 return true;
             }else{
-                System.out.println("this.face:"+this.getFace()+" this.suite"+this.getSuite()+ " card.face:"+card.getFace()+ " card.suite:"+card.getSuite());
+                //System.out.println("this.face:"+this.getFace()+" this.suite"+this.getSuite()+ " card.face:"+card.getFace()+ " card.suite:"+card.getSuite());
                 return false;
             }
         }else{
@@ -32,6 +33,6 @@ public class Card {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return 31*Integer.hashCode(this.face) + Integer.hashCode(this.suite);
     }
 }

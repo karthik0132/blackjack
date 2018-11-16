@@ -1,4 +1,4 @@
-package com.learn.domain;
+package com.desi.casino.domain;
 
 public enum Face {
     ACE(1),

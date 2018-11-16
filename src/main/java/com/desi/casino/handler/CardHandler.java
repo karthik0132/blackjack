@@ -1,10 +1,12 @@
-package com.learn.handler;
+package com.desi.casino.handler;
 
-import com.learn.domain.Card;
-import com.learn.domain.Suite;
-import org.w3c.dom.ranges.Range;
+import com.desi.casino.domain.Suite;
+import com.desi.casino.domain.Card;
 
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CardHandler {
@@ -17,12 +19,19 @@ public class CardHandler {
         List<Card> newPack = new LinkedList<Card>();
         Set<Card> setOfCards = new LinkedHashSet<>();
         for(int i=0;i< MAX_DECK_SIZE; i++) {
-            while (setOfCards.size() <= 52) {
-                int suite = ThreadLocalRandom.current().nextInt(1, 5);
-                int face = ThreadLocalRandom.current().nextInt(1, 13);
+            while (setOfCards.size() < 52) {
+                int random = ThreadLocalRandom.current().nextInt(1, 53);
+                int suite = (random/13) +1;
+                int face = random%13;
+                if(face == 0){
+                    face=13;
+                    suite--;
+                }
                 Card card = new Card(suite, face);
                 setOfCards.add(card);
+                System.out.println("Size of Set"+setOfCards.size());
             }
+            System.out.println("Done adding set:"+i);
             newPack.addAll(newPack.size(), setOfCards);
             setOfCards = new LinkedHashSet<>();
         }
